@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
 import { Heart } from 'lucide-react';
+import TypewriterText from '../components/special/TypewriterText';
 
 const Wish = () => {
     const navigate = useNavigate();
@@ -15,7 +16,7 @@ const Wish = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1 }}
             >
-                <Card className="relative overflow-hidden pt-16 pb-12 px-8 md:px-12 text-center bg-white/95">
+                <Card className="relative overflow-hidden pt-16 pb-12 px-8 md:px-12 text-center bg-white/95 shadow-2xl">
                     {/* Decorative Heart Icon */}
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-rose-500 p-4 rounded-full shadow-xl text-white">
                         <Heart size={32} fill="currentColor" />
@@ -25,22 +26,21 @@ const Wish = () => {
                         To My Dearest Sayang,
                     </h2>
 
-                    <div className="space-y-6 text-lg text-rose-700/80 leading-relaxed font-serif italic text-left">
+                    <div className="space-y-6 text-lg text-rose-700/80 leading-relaxed font-serif italic text-left min-h-[400px]">
                         <p>
-                            Happy Birthday, my love! Today is not just another day; it's the day the world was blessed with your beautiful presence.
-                        </p>
-                        <p>
-                            I want you to know how much you mean to me. You are the light that guides me through the darkest nights and the warmth that fills my heart every single morning. Every moment we spend together is a treasure that I hold dear.
+                            <TypewriterText text="Happy Birthday, my love! Today is not just another day; it's the day the world was blessed with your beautiful presence." delay={0.04} />
                         </p>
                         <p>
-                            Thank you for being you—for your kindness, your laughter, your amazing strength, and the way you make even the simplest things feel magical. I'm so incredibly lucky to walk through life by your side.
+                            <TypewriterText text="I want you to know how much you mean to me. You are the light that guides me through the darkest nights and the warmth that fills my heart every single morning. Every moment we spend together is a treasure that I hold dear." delay={0.04} />
                         </p>
                         <p>
-                            As you celebrate another year, my only wish is for your happiness. May your day be as spectacular as your smile and your year as wonderful as your heart.
+                            <TypewriterText text="Thank you for being you—for your kindness, your laughter, your amazing strength, and the way you make even the simplest things feel magical. I'm so incredibly lucky to walk through life by your side." delay={0.04} />
                         </p>
-                        <p className="text-center font-bold text-2xl text-rose-600 mt-12 not-italic">
-                            I love you more than words can say. ❤️
-                        </p>
+                        <TypewriterText
+                            className="block text-center font-bold text-2xl text-rose-600 mt-12 not-italic"
+                            text="I love you more than words can say. ❤️"
+                            delay={0.1}
+                        />
                     </div>
 
                     <motion.div
