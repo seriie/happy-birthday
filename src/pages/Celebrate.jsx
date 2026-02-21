@@ -1,104 +1,136 @@
-import React, { useMemo } from 'react';
-import { motion } from 'framer-motion';
+import React, { useMemo, useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/ui/Button';
-import { Cake, Sparkles, PartyPopper, Heart } from 'lucide-react';
+import { Cake, Sparkles, PartyPopper, Heart, Star } from 'lucide-react';
 
-const Balloon = ({ delay, x, color }) => (
+// Confetti particle
+const Confetti = ({ x, delay, color, size }) => (
     <motion.div
-        initial={{ y: "120vh", x }}
-        animate={{ y: "-20vh" }}
-        transition={{ duration: 10 + Math.random() * 10, delay, repeat: Infinity, ease: "linear" }}
-        className={`absolute pointer-events-none opacity-40 ${color}`}
-    >
-        <div className="w-12 h-16 rounded-full relative">
-            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-8 bg-rose-200" />
-        </div>
-    </motion.div>
+        className={`absolute rounded-sm pointer-events-none ${color}`}
+        style={{ left: `${x}%`, width: size, height: size * 0.4 }}
+        initial={{ y: -20, opacity: 1, rotate: 0 }}
+        animate={{ y: '110vh', opacity: [1, 1, 0], rotate: 720 }}
+        transition={{ duration: 4 + Math.random() * 3, delay, ease: 'linear', repeat: Infinity }}
+    />
 );
+
+const CONFETTI_COLORS = ['bg-rose-400', 'bg-pink-300', 'bg-amber-300', 'bg-rose-300', 'bg-fuchsia-300', 'bg-orange-300'];
 
 const Celebrate = () => {
     const navigate = useNavigate();
+    const [showContent, setShowContent] = useState(false);
 
-    const balloons = useMemo(() =>
-        Array.from({ length: 10 }).map((_, i) => ({
+    useEffect(() => {
+        const t = setTimeout(() => setShowContent(true), 600);
+        return () => clearTimeout(t);
+    }, []);
+
+    const confettiPieces = useMemo(() =>
+        Array.from({ length: 30 }).map((_, i) => ({
             id: i,
-            x: `${Math.random() * 100}vw`,
-            delay: Math.random() * 10,
-            color: ["text-rose-300", "text-pink-300", "text-amber-200", "text-rose-400"][Math.floor(Math.random() * 4)]
+            x: Math.random() * 100,
+            delay: Math.random() * 4,
+            color: CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)],
+            size: Math.random() * 10 + 6,
         }))
         , []);
 
     return (
-        <div className="text-center py-12 relative overflow-hidden min-h-[80vh] flex flex-col items-center justify-center">
-            {/* Floating Balloons */}
-            <div className="fixed inset-0 pointer-events-none z-0">
-                {balloons.map(b => (
-                    <Balloon key={b.id} {...b} />
+        <div className="min-h-[85vh] flex flex-col items-center justify-center text-center relative overflow-hidden py-12 px-4">
+            {/* Confetti rain */}
+            <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+                {confettiPieces.map((p) => (
+                    <Confetti key={p.id} {...p} />
                 ))}
             </div>
 
+            {/* Big animated cake */}
             <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                className="relative inline-block mb-12 z-10"
+                initial={{ scale: 0, rotate: -10 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ type: 'spring', stiffness: 200, damping: 18 }}
+                className="relative z-10 mb-12"
             >
-                <div className="bg-white/80 backdrop-blur-md p-10 rounded-full shadow-[0_0_50px_rgba(251,113,133,0.3)] relative z-10 border-4 border-rose-100">
-                    <Cake size={100} className="text-rose-500" />
-                </div>
+                <div className="relative">
+                    {/* Glowing ring */}
+                    <motion.div
+                        animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                        className="absolute inset-0 bg-rose-200/40 rounded-full blur-2xl"
+                    />
 
-                <motion.div
-                    animate={{ y: [-20, 20], x: [-10, 10], rotate: [0, 15] }}
-                    transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
-                    className="absolute -top-8 -left-8 text-amber-400"
-                >
-                    <Sparkles size={60} />
-                </motion.div>
-
-                <motion.div
-                    animate={{ y: [10, -10], x: [5, -5], rotate: [0, -15] }}
-                    transition={{ duration: 1.5, repeat: Infinity, repeatType: "reverse", delay: 0.5 }}
-                    className="absolute -bottom-8 -right-8 text-rose-500"
-                >
-                    <PartyPopper size={64} />
-                </motion.div>
-            </motion.div>
-
-            <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="z-10"
-            >
-                <h1 className="text-5xl md:text-7xl font-serif text-rose-800 mb-8 px-4 leading-tight">
-                    Happy Birthday, <br /> Sayang! 🎂✨
-                </h1>
-                <p className="text-2xl text-rose-600/70 mb-12 italic font-serif max-w-lg mx-auto">
-                    "Wishing you a day as beautiful and bright as the love you give."
-                </p>
-
-                <div className="flex flex-col items-center gap-8">
-                    <div className="flex gap-6">
-                        {[0, 1, 2].map(i => (
-                            <motion.div
-                                key={i}
-                                animate={{ scale: [1, 1.2, 1] }}
-                                transition={{ duration: 1, repeat: Infinity, delay: i * 0.2 }}
-                            >
-                                <Heart className="text-rose-400 fill-rose-400" size={32} />
-                            </motion.div>
-                        ))}
+                    <div className="relative bg-white/80 backdrop-blur-xl p-10 rounded-full border-4 border-rose-100 shadow-[0_0_60px_rgba(244,63,94,0.25)]">
+                        <Cake size={96} className="text-rose-500" strokeWidth={1.5} />
                     </div>
 
-                    <Button
-                        onClick={() => navigate('/')}
-                        className="bg-transparent border-2 border-rose-300 text-rose-500 hover:bg-rose-50 shadow-none px-12 py-4 text-xl"
-                    >
-                        Read Again 💌
-                    </Button>
+                    {/* Orbiting sparkles */}
+                    {[0, 72, 144, 216, 288].map((deg, i) => (
+                        <motion.div
+                            key={i}
+                            className="absolute inset-0 flex items-start justify-center"
+                            animate={{ rotate: [deg, deg + 360] }}
+                            transition={{ duration: 8, repeat: Infinity, ease: 'linear', delay: i * 0.3 }}
+                        >
+                            <motion.div
+                                animate={{ scale: [0.8, 1.2, 0.8] }}
+                                transition={{ duration: 2, repeat: Infinity, delay: i * 0.4 }}
+                                className="-translate-y-16"
+                            >
+                                <Star size={12} className="text-amber-400 fill-amber-400" />
+                            </motion.div>
+                        </motion.div>
+                    ))}
                 </div>
             </motion.div>
+
+            {/* Text content */}
+            <AnimatePresence>
+                {showContent && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        className="relative z-10 space-y-6 max-w-xl mx-auto"
+                    >
+                        <p className="text-rose-400 font-display italic tracking-widest uppercase text-sm">
+                            ✨ it's your special day ✨
+                        </p>
+                        <h1 className="text-5xl md:text-7xl font-display font-bold text-rose-800 leading-tight">
+                            Happy <br />
+                            <span className="shimmer-text">Birthday!</span>
+                        </h1>
+                        <p className="text-rose-600/70 font-display italic text-xl leading-relaxed">
+                            "May every wish your heart holds come true today and always."
+                        </p>
+
+                        {/* Animated hearts row */}
+                        <div className="flex justify-center gap-4 py-4">
+                            {[0, 1, 2, 3, 4].map((i) => (
+                                <motion.div
+                                    key={i}
+                                    animate={{ y: [0, -10, 0], scale: [1, 1.3, 1] }}
+                                    transition={{ duration: 1.2, repeat: Infinity, delay: i * 0.15 }}
+                                >
+                                    <Heart
+                                        size={i === 2 ? 36 : 24}
+                                        className={`fill-current ${i === 2 ? 'text-rose-500' : 'text-rose-300'}`}
+                                    />
+                                </motion.div>
+                            ))}
+                        </div>
+
+                        <div className="pt-4">
+                            <Button
+                                onClick={() => navigate('/')}
+                                className="bg-white border-2 border-rose-200 text-rose-500 hover:bg-rose-50 hover:border-rose-400 shadow-lg px-10 py-4 text-base font-bold tracking-wide"
+                            >
+                                💌 Read Again from the Start
+                            </Button>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };
