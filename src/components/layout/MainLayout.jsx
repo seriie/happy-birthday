@@ -5,6 +5,7 @@ import { SparklesContainer } from '../special/Sparkles';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Heart, ArrowLeft, ArrowRight } from 'lucide-react';
+import LanguageSwitcher from '../ui/LanguageSwitcher';
 
 const ROUTES = ['/', '/story', '/gallery', '/wish', '/celebrate'];
 const ROUTE_LABELS = ['Home', 'Story', 'Memories', 'Wish', 'Celebrate'];
@@ -22,8 +23,8 @@ const NavDots = () => {
                     onClick={() => navigate(route)}
                     title={ROUTE_LABELS[i]}
                     className={`transition-all duration-500 rounded-full border-2 ${i === currentIdx
-                            ? 'w-8 h-3 bg-rose-500 border-rose-500'
-                            : 'w-3 h-3 bg-white border-rose-200 hover:border-rose-400'
+                        ? 'w-8 h-3 bg-rose-500 border-rose-500'
+                        : 'w-3 h-3 bg-white border-rose-200 hover:border-rose-400'
                         }`}
                 />
             ))}
@@ -41,6 +42,7 @@ const MainLayout = ({ children }) => {
             <CustomCursor />
             <SparklesContainer />
             <FloatingHearts />
+            <LanguageSwitcher />
 
             {/* Bokeh orbs */}
             <div className="fixed top-1/4 left-1/4 w-96 h-96 bg-rose-200/20 rounded-full blur-3xl pointer-events-none z-0" />

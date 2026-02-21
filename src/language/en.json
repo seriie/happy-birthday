@@ -1,0 +1,88 @@
+{
+  "nav": {
+    "home": "Home",
+    "story": "Our Story",
+    "gallery": "Memories",
+    "wish": "My Letter",
+    "celebrate": "Celebrate"
+  },
+  "landing": {
+    "subtitle": "A very special message",
+    "title": "For Someone",
+    "titleHighlight": "Beautiful",
+    "hintText": "\"Press the heart seal to begin...\"",
+    "revealTitle": "She's Waiting...",
+    "revealMessage": "\"I've put my heart and soul into every word and every memory. Are you ready to see it?\"",
+    "revealButton": "Let's Go, Sayang!",
+    "envelope": {
+      "title": "For my beautiful",
+      "message": "Click to open my heart..."
+    }
+  },
+  "story": {
+    "chapter": "Chapter One",
+    "title": "Our Journey",
+    "closing": "And the story continues...",
+    "ctaButton": "Our Memories 📸",
+    "timeline": [
+      {
+        "title": "The First Meeting",
+        "date": "A Day to Remember",
+        "description": "That moment when everything changed and the world became brighter just by seeing your smile. Something told me you were extraordinary."
+      },
+      {
+        "title": "Our First Date",
+        "date": "The Spark",
+        "description": "Simple moments turned into extraordinary memories. Every laugh we shared was music, and every glance was a whole conversation."
+      },
+      {
+        "title": "Adventures Together",
+        "date": "Growing Closer",
+        "description": "Exploring the world, or just exploring each other's dreams. Every step taken beside you is a gift I'll never take for granted."
+      },
+      {
+        "title": "Falling in Love",
+        "date": "Every Day Since",
+        "description": "Realizing my heart had finally found its home in you. I fall more in love with you every single morning I wake up by your side."
+      }
+    ]
+  },
+  "gallery": {
+    "chapter": "Chapter Two",
+    "title": "Our Memories",
+    "subtitle": "\"Every picture is a moment I never want to forget.\"",
+    "addPhoto": "Add Photo Here",
+    "closing": "And there's still so much more to come...",
+    "ctaButton": "Read My Letter 💌",
+    "photos": [
+      { "title": "First Smile", "caption": "The moment that started everything" },
+      { "title": "Our Getaway", "caption": "Just us, somewhere beautiful" },
+      { "title": "Late Nights", "caption": "My favourite kind of evenings" },
+      { "title": "Little Things", "caption": "Ordinary days made extraordinary" },
+      { "title": "Silly Us", "caption": "Laughing until we cried" },
+      { "title": "Just Us", "caption": "My favourite place — with you" }
+    ]
+  },
+  "wish": {
+    "chapter": "Chapter Three",
+    "title": "My Letter",
+    "salutation": "To my dearest Sayang,",
+    "continueReading": "Continue reading...",
+    "closing": "I love you endlessly. ❤️",
+    "signature": "— Always yours",
+    "ctaButton": "Let's Celebrate! 🎉",
+    "paragraphs": [
+      "Happy Birthday, my love. Today isn't just another page on the calendar — it's the anniversary of when the universe decided to gift the world its most precious person.",
+      "I want you to know how deeply you are loved. You are the light on my darkest mornings, the calm in every storm, and the reason even ordinary Tuesdays feel like something worth celebrating.",
+      "Thank you for your kindness, your laughter, and the way you make me feel like I am exactly where I am meant to be. Walking through life beside you is the greatest adventure I have ever known.",
+      "On this birthday and all the ones to come, I promise to love you more, hold you closer, and never let you forget just how extraordinary you truly are."
+    ]
+  },
+  "celebrate": {
+    "label": "✨ it's your special day ✨",
+    "title": "Happy",
+    "titleHighlight": "Birthday!",
+    "subtitle": "\"May every wish your heart holds come true today and always.\"",
+    "ctaButton": "💌 Read Again from the Start"
+  }
+}

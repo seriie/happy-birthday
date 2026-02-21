@@ -1,0 +1,88 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "story": "Kisah Kita",
+    "gallery": "Kenangan",
+    "wish": "Suratku",
+    "celebrate": "Rayakan"
+  },
+  "landing": {
+    "subtitle": "Sebuah pesan spesial",
+    "title": "Untuk Seseorang yang",
+    "titleHighlight": "Cantik",
+    "hintText": "\"Tekan segel hati untuk memulai...\"",
+    "revealTitle": "Dia Menunggu...",
+    "revealMessage": "\"Aku telah menuangkan hati dan jiwa ke setiap kata dan setiap kenangan. Apakah kamu siap?\"",
+    "revealButton": "Ayo, Sayang!",
+    "envelope": {
+      "title": "Untukmu yang tercinta",
+      "message": "Klik untuk membuka hatiku..."
+    }
+  },
+  "story": {
+    "chapter": "Bab Satu",
+    "title": "Perjalanan Kita",
+    "closing": "Dan kisah ini terus berlanjut...",
+    "ctaButton": "Kenangan Kita 📸",
+    "timeline": [
+      {
+        "title": "Pertemuan Pertama",
+        "date": "Hari yang Tak Terlupakan",
+        "description": "Saat itu segalanya berubah, dan dunia terasa lebih cerah hanya karena melihat senyummu. Ada sesuatu yang memberitahuku bahwa kamu luar biasa."
+      },
+      {
+        "title": "Kencan Pertama",
+        "date": "Percikan Api",
+        "description": "Momen sederhana yang berubah menjadi kenangan luar biasa. Setiap tawa yang kita bagi adalah musik, dan setiap tatapan adalah percakapan."
+      },
+      {
+        "title": "Petualangan Bersama",
+        "date": "Semakin Dekat",
+        "description": "Menjelajahi dunia, atau sekadar menjelajahi mimpi satu sama lain. Setiap langkah bersamamu adalah hadiah yang tak pernah aku sia-siakan."
+      },
+      {
+        "title": "Jatuh Cinta",
+        "date": "Setiap Hari Sejak Itu",
+        "description": "Sadar bahwa hatiku akhirnya menemukan rumahnya di sisimu. Aku semakin mencintaimu setiap pagi saat aku membuka mata."
+      }
+    ]
+  },
+  "gallery": {
+    "chapter": "Bab Dua",
+    "title": "Kenangan Kita",
+    "subtitle": "\"Setiap foto adalah momen yang tidak pernah ingin kulupakan.\"",
+    "addPhoto": "Tambahkan Foto",
+    "closing": "Dan masih banyak lagi yang akan datang...",
+    "ctaButton": "Baca Suratku 💌",
+    "photos": [
+      { "title": "Senyum Pertama", "caption": "Momen yang memulai segalanya" },
+      { "title": "Perjalanan Kita", "caption": "Hanya kita, di tempat yang indah" },
+      { "title": "Malam Panjang", "caption": "Malam favoritku — bersamamu" },
+      { "title": "Hal Kecil", "caption": "Hari biasa yang luar biasa" },
+      { "title": "Kita yang Lucu", "caption": "Tertawa sampai menangis" },
+      { "title": "Cuma Kita", "caption": "Tempat favoritku — bersamamu" }
+    ]
+  },
+  "wish": {
+    "chapter": "Bab Tiga",
+    "title": "Suratku",
+    "salutation": "Untuk sayangku tersayang,",
+    "continueReading": "Lanjutkan membaca...",
+    "closing": "Aku mencintaimu tanpa batas. ❤️",
+    "signature": "— Selalu milikmu",
+    "ctaButton": "Ayo Rayakan! 🎉",
+    "paragraphs": [
+      "Selamat Ulang Tahun, cintaku. Hari ini bukan sekadar tanggal di kalender — ini adalah peringatan hari saat semesta memutuskan untuk menghadiahi dunia dengan orang yang paling berharga.",
+      "Aku ingin kamu tahu betapa dalamnya kamu dicintai. Kamu adalah cahaya di pagi-pagiku yang paling gelap, ketenangan di setiap badai, dan alasan mengapa hari Selasa yang biasa pun terasa layak dirayakan.",
+      "Terima kasih atas kebaikanmu, tawamu, dan cara kamu membuatku merasa seperti aku berada di tempat yang seharusnya. Menapaki hidup bersamamu adalah petualangan terbesar yang pernah aku jalani.",
+      "Di ulang tahun ini dan semua ulang tahun yang akan datang, aku berjanji untuk mencintaimu lebih, memelukmu erat, dan tidak pernah membiarkanmu lupa betapa luar biasanya dirimu."
+    ]
+  },
+  "celebrate": {
+    "label": "✨ ini hari spesialmu ✨",
+    "title": "Selamat",
+    "titleHighlight": "Ulang Tahun!",
+    "subtitle": "\"Semoga setiap keinginan hatimu terwujud hari ini dan seterusnya.\"",
+    "ctaButton": "💌 Baca Lagi dari Awal"
+  }
+}

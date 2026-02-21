@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/ui/Button';
 import { Cake, Sparkles, PartyPopper, Heart, Star } from 'lucide-react';
+import { useLanguage } from '../lib/LanguageContext';
 
-// Confetti particle
 const Confetti = ({ x, delay, color, size }) => (
     <motion.div
         className={`absolute rounded-sm pointer-events-none ${color}`}
@@ -19,11 +19,12 @@ const CONFETTI_COLORS = ['bg-rose-400', 'bg-pink-300', 'bg-amber-300', 'bg-rose-
 
 const Celebrate = () => {
     const navigate = useNavigate();
+    const { t } = useLanguage();
     const [showContent, setShowContent] = useState(false);
 
     useEffect(() => {
-        const t = setTimeout(() => setShowContent(true), 600);
-        return () => clearTimeout(t);
+        const timer = setTimeout(() => setShowContent(true), 600);
+        return () => clearTimeout(timer);
     }, []);
 
     const confettiPieces = useMemo(() =>
@@ -38,14 +39,12 @@ const Celebrate = () => {
 
     return (
         <div className="min-h-[85vh] flex flex-col items-center justify-center text-center relative overflow-hidden py-12 px-4">
-            {/* Confetti rain */}
+            {/* Confetti */}
             <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-                {confettiPieces.map((p) => (
-                    <Confetti key={p.id} {...p} />
-                ))}
+                {confettiPieces.map((p) => <Confetti key={p.id} {...p} />)}
             </div>
 
-            {/* Big animated cake */}
+            {/* Cake */}
             <motion.div
                 initial={{ scale: 0, rotate: -10 }}
                 animate={{ scale: 1, rotate: 0 }}
@@ -53,18 +52,14 @@ const Celebrate = () => {
                 className="relative z-10 mb-12"
             >
                 <div className="relative">
-                    {/* Glowing ring */}
                     <motion.div
                         animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
                         transition={{ duration: 2, repeat: Infinity }}
                         className="absolute inset-0 bg-rose-200/40 rounded-full blur-2xl"
                     />
-
                     <div className="relative bg-white/80 backdrop-blur-xl p-10 rounded-full border-4 border-rose-100 shadow-[0_0_60px_rgba(244,63,94,0.25)]">
                         <Cake size={96} className="text-rose-500" strokeWidth={1.5} />
                     </div>
-
-                    {/* Orbiting sparkles */}
                     {[0, 72, 144, 216, 288].map((deg, i) => (
                         <motion.div
                             key={i}
@@ -84,7 +79,7 @@ const Celebrate = () => {
                 </div>
             </motion.div>
 
-            {/* Text content */}
+            {/* Text */}
             <AnimatePresence>
                 {showContent && (
                     <motion.div
@@ -93,18 +88,13 @@ const Celebrate = () => {
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                         className="relative z-10 space-y-6 max-w-xl mx-auto"
                     >
-                        <p className="text-rose-400 font-display italic tracking-widest uppercase text-sm">
-                            ✨ it's your special day ✨
-                        </p>
+                        <p className="text-rose-400 font-display italic tracking-widest uppercase text-sm">{t('celebrate.label')}</p>
                         <h1 className="text-5xl md:text-7xl font-display font-bold text-rose-800 leading-tight">
-                            Happy <br />
-                            <span className="shimmer-text">Birthday!</span>
+                            {t('celebrate.title')} <br />
+                            <span className="shimmer-text">{t('celebrate.titleHighlight')}</span>
                         </h1>
-                        <p className="text-rose-600/70 font-display italic text-xl leading-relaxed">
-                            "May every wish your heart holds come true today and always."
-                        </p>
+                        <p className="text-rose-600/70 font-display italic text-xl leading-relaxed">{t('celebrate.subtitle')}</p>
 
-                        {/* Animated hearts row */}
                         <div className="flex justify-center gap-4 py-4">
                             {[0, 1, 2, 3, 4].map((i) => (
                                 <motion.div
@@ -112,10 +102,7 @@ const Celebrate = () => {
                                     animate={{ y: [0, -10, 0], scale: [1, 1.3, 1] }}
                                     transition={{ duration: 1.2, repeat: Infinity, delay: i * 0.15 }}
                                 >
-                                    <Heart
-                                        size={i === 2 ? 36 : 24}
-                                        className={`fill-current ${i === 2 ? 'text-rose-500' : 'text-rose-300'}`}
-                                    />
+                                    <Heart size={i === 2 ? 36 : 24} className={`fill-current ${i === 2 ? 'text-rose-500' : 'text-rose-300'}`} />
                                 </motion.div>
                             ))}
                         </div>
@@ -125,7 +112,7 @@ const Celebrate = () => {
                                 onClick={() => navigate('/')}
                                 className="bg-white border-2 border-rose-200 text-rose-500 hover:bg-rose-50 hover:border-rose-400 shadow-lg px-10 py-4 text-base font-bold tracking-wide"
                             >
-                                💌 Read Again from the Start
+                                {t('celebrate.ctaButton')}
                             </Button>
                         </div>
                     </motion.div>

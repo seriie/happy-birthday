@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { LanguageProvider } from './lib/LanguageContext';
 import MainLayout from './components/layout/MainLayout';
 import Landing from './pages/Landing';
 import Story from './pages/Story';
@@ -9,17 +10,19 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
-      <MainLayout>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/story" element={<Story />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/wish" element={<Wish />} />
-          <Route path="/celebrate" element={<Celebrate />} />
-        </Routes>
-      </MainLayout>
-    </Router>
+    <LanguageProvider>
+      <Router>
+        <MainLayout>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/story" element={<Story />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/wish" element={<Wish />} />
+            <Route path="/celebrate" element={<Celebrate />} />
+          </Routes>
+        </MainLayout>
+      </Router>
+    </LanguageProvider>
   );
 }
 

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heart } from 'lucide-react';
+import { useLanguage } from '../../lib/LanguageContext';
 
 const Envelope = ({ onOpen, isOpen }) => {
+    const { t } = useLanguage();
     return (
         <div className="relative w-full max-w-md mx-auto aspect-[4/3] perspective-1000 cursor-pointer group" onClick={onOpen}>
             {/* Back of envelope */}
@@ -16,8 +18,8 @@ const Envelope = ({ onOpen, isOpen }) => {
                 transition={{ duration: 0.8, ease: "easeInOut" }}
             >
                 <div className="z-50 flex flex-col items-center">
-                    <h3 className="text-2xl font-serif text-rose-500 mb-2">For My Sayang</h3>
-                    <p className="text-rose-500 italic">Click to open my heart...</p>
+                    <h3 className="text-2xl font-serif text-rose-500 mb-2">{t('landing.envelope.title')}</h3>
+                    <p className="text-rose-500 italic">{t('landing.envelope.message')}</p>
                     <Heart className="text-rose-500 mt-4 animate-pulse fill-rose-500" />
                 </div>
             </motion.div>
